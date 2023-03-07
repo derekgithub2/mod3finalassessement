@@ -24,7 +24,6 @@ export class App extends Component {
   }
 
   addNewURL(newurl) {
-    // console.log(newurl)
 
     this.setState({ urls: [...this.state.urls, newurl] });
 

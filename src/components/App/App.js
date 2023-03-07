@@ -18,15 +18,28 @@ export class App extends Component {
     getUrls()
     .then(data => {
       this.setState({urls: data.urls})
+      console.log("inside componentdidmount", this.state)
     })
     .catch(error => this.setState({error: `${error}`}))
   }
 
   addNewURL(newurl) {
-    console.log(newurl)
+    // console.log(newurl)
 
     this.setState({ urls: [...this.state.urls, newurl] });
-    // console.log("this.state: ", this.state)
+
+    fetch('http://localhost:3001/api/v1/urls', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: 2, 
+        long_url: `${newurl.long_url}`, 
+        short_url: "http://localhost:3001/useshorturl/2", 
+        title: 'Awesome photo'}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
   }
 
   render() {

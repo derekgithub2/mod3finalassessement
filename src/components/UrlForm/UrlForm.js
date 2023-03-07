@@ -20,7 +20,6 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("the props from app are: ", this.props)
 
     const newURL = {
       id: this.props.urls.length+1,

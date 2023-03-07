@@ -29,7 +29,6 @@ describe('empty spec', () => {
 
     cy.get('form')
       .get('input[name="urlToShorten"]')
-
   })
 
 
@@ -46,6 +45,23 @@ describe('empty spec', () => {
 
     cy.get('input[name="urlToShorten"]')
       .should('have.value', 'LONG URL HERE')
+  })
 
+  it('should render a new shortened URL when the user fills out and submits the form', () => {
+    cy.get('input[name="title"]')
+      .type('NEW TITLE')
+
+    cy.get('input[name="urlToShorten"]')
+      .type('LONG URL HERE{enter}')
+
+    cy.get('.url')
+      .last()
+      .find('h3')
+      .should('contain', 'NEW TITLE')
+
+    cy.get('.url')
+      .last()
+      .find('p')
+      .should('contain', 'LONG URL HERE')
   })
 })

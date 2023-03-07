@@ -18,7 +18,6 @@ export class App extends Component {
     getUrls()
     .then(data => {
       this.setState({urls: data.urls})
-      console.log("inside componentdidmount", this.state)
     })
     .catch(error => this.setState({error: `${error}`}))
   }
@@ -33,7 +32,7 @@ export class App extends Component {
         id: 2, 
         long_url: `${newurl.long_url}`, 
         short_url: "http://localhost:3001/useshorturl/2", 
-        title: 'Awesome photo'}),
+        title: `${newurl.title}`}),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -48,7 +47,6 @@ export class App extends Component {
           <h1>URL Shortener</h1>
           <UrlForm addNewURL={this.addNewURL} urls={this.state.urls}/>
         </header>
-
         <UrlContainer urls={this.state.urls}/>
       </main>
     );

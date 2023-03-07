@@ -1,4 +1,4 @@
-describe('empty spec', () => {
+describe('app functionality', () => {
   beforeEach(() => {
     cy.intercept('GET', 'urlhere')
       .as('getData')
